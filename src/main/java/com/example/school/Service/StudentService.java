@@ -4,6 +4,10 @@ package com.example.school.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.example.school.Entity.Student;
@@ -42,6 +46,17 @@ public class StudentService {
         
         return teacher!=null? teacher.getStudent():new ArrayList<>();
     }
+    public Page<Student> getFilteredStudent(String location, int page, int size, String sortBy, String direction) {
+        Sort.Direction dir = direction.equalsIgnoreCase("desc") ? Sort.Direction.DESC : Sort.Direction.ASC;
+        Pageable pageable = PageRequest.of(page, size, Sort.by(dir, sortBy));
+    
+        if (location != null) {
+            return studentrepo.findByLocation(location, pageable);
+        } else {
+            return studentrepo.findAll(pageable);
+        }
+    }
+    
 
     
 }
