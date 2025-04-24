@@ -1,0 +1,75 @@
+###
+POST http://localhost:8080/student
+Content-Type: application/json
+
+{
+  "name": "Manoj",
+  "location": "Chennai",
+  "teacher": {
+    "id": 1
+  },
+   "course":{
+    "id":1
+  }
+
+}
+###
+POST http://localhost:8080/student
+Content-Type: application/json
+
+{
+  "name": "love",
+  "location": "Chennai",
+  "teacher": {
+    "id": 1
+  },
+   "course":{
+    "id":1
+  }
+}
+###
+POST http://localhost:8080/student
+Content-Type: application/json
+
+{
+  "name": "kumar",
+  "location": "Chennai",
+  "teacher": {
+    "id": 1
+  },
+   "course":{
+    "id":1
+  }
+}
+
+###
+GET http://localHost:8080/student
+
+###
+POST http://localhost:8080/teacher
+Content-Type: application/json
+
+{
+    "name":"jkjk",
+    "subject":"english"
+}
+
+###
+GET http://localhost:8080/student/byteacher/1
+
+###
+GET http://localhost:8080/teacher
+
+###
+POST http://localhost:8080/course
+Content-Type: application/json
+
+{
+    "name":"biology",
+    "subject":"english"
+}
+###
+GET http://localhost:8080/course
+
+###
+
