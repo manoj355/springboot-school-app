@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import com.example.school.DTO.StudentPageResponse;
 import com.example.school.Entity.Student;
 import com.example.school.Entity.Teacher;
 import com.example.school.Repository.CourseRepository;
@@ -56,6 +57,20 @@ public class StudentService {
             return studentrepo.findAll(pageable);
         }
     }
+    public StudentPageResponse getFilteredStudents (String location,int page,int size,String sortBy,String direction){
+        Sort.Direction dir=direction.equalsIgnoreCase("desc")? Sort.Direction.DESC:Sort.Direction.ASC;
+        Pageable pageable=PageRequest.of(page,size,Sort.by(dir,sortBy));
+
+        Page<Student> studentPage=(location!=null)?studentrepo.findByLocation(location, pageable):studentrepo.findAll(pageable);
+
+        return new StudentPageResponse(studentPage.getContent(),
+        studentPage.getSize(),
+        studentPage.getNumber(),
+        studentPage.getTotalPages(),
+        (int)studentPage.getNumberOfElements());
+        
+    }
+
     
 
     

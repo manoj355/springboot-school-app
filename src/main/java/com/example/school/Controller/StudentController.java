@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.school.DTO.StudentPageResponse;
 import com.example.school.Entity.Student;
 import com.example.school.Service.StudentService;
 
@@ -53,7 +54,13 @@ public class StudentController {
     }
     
 
-    
-    
+    @GetMapping("/filters")
+    public StudentPageResponse getFilteredStudents(@RequestParam(required = false)String location,
+                                                    @RequestParam(defaultValue = "0")int page,
+                                                    @RequestParam(defaultValue = "5")int size,
+                                                    @RequestParam(defaultValue = "id")String id,
+                                                    @RequestParam(defaultValue = "asc")String direction){
+                                                        return studentservice.getFilteredStudents(location, page, size, id, direction);
+                                                    }
     
 }
