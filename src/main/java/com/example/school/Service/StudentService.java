@@ -16,6 +16,7 @@ import com.example.school.Entity.Teacher;
 import com.example.school.Repository.CourseRepository;
 import com.example.school.Repository.StudentRepository;
 import com.example.school.Repository.TeacherRepository;
+import com.example.school.exception.studentNotFoundException;
 
 @Service
 public class StudentService {
@@ -69,6 +70,10 @@ public class StudentService {
         studentPage.getTotalPages(),
         (int)studentPage.getNumberOfElements());
         
+    }
+    public Student getStudentById(Long id)
+    {
+        return studentrepo.findById(id).orElseThrow(() -> new studentNotFoundException(id+" id not found "));
     }
 
     

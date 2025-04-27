@@ -61,6 +61,11 @@ public class StudentController {
                                                     @RequestParam(defaultValue = "id")String id,
                                                     @RequestParam(defaultValue = "asc")String direction){
                                                         return studentservice.getFilteredStudents(location, page, size, id, direction);
-                                                    }
+    }
+    @GetMapping("/{id}")
+    public Student getstudentbyid(@PathVariable Long id)
+    {
+        return studentservice.getStudentById(id);
+    }
     
 }

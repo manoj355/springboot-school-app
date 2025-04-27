@@ -55,7 +55,7 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:8080/student/byteacher/1
+GET http://localhost:8080/student/byteacher/11
 
 ###
 GET http://localhost:8080/teacher
@@ -74,3 +74,6 @@ GET http://localhost:8080/course
 ###
 
 GET http://localhost:8080/student/filters
+###
+
+GET http://localhost:8080/student/55
